@@ -571,7 +571,6 @@ Day 30: Final review and repository completion
 * Strong application security foundation
 * Demonstrable hands-on security skills
 * Interview-ready explanations
-* Recruiter-friendly GitHub repository
 
 ---
 
@@ -580,4 +579,5 @@ Day 30: Final review and repository completion
 **Kavya Krishna Chinchankar**
 M.Tech – Cybersecurity
 Aspiring Application / Platform Security Engineer
+
 
