@@ -1,117 +1,193 @@
-﻿# Week 1 – Networking Foundations: Day 7 – Revision & Practice
+﻿# WEEK 1 – DAY 7
 
-This guide is designed to **cement all networking concepts learned in Week 1**, so you can confidently **explain concepts, draw diagrams, solve subnets, and answer interview questions**.
+## WEEKLY REVISION + INTERVIEW THINKING
 
----
-
-## Table of Contents
-
-1. [Full Packet Flow Diagram](#full-packet-flow-diagram)  
-2. [Subnet Practice Questions](#subnet-practice-questions)  
-3. [Explain TCP Handshake Aloud](#explain-tcp-handshake-aloud)  
-4. [Mock Interview Questions](#mock-interview-questions)  
-5. [Revision Checklist](#revision-checklist)
+*(Security-Focused, Easy-to-Explain, Interview-Ready)*
 
 ---
 
-## Full Packet Flow Diagram
+## PART 1: HIGH-LEVEL REVISION (Days 1–6)
 
-Visualize **data flow from source to destination**, including all OSI layers, encapsulation, and network devices.
+### Day 1 – Security Fundamentals
 
-**Example: Sending a Web Request (Laptop → Switch → Router → Server)**
+You learned:
 
-1. **Application Layer** – Browser sends HTTP request (GET /index.html)  
-2. **Presentation Layer** – Data formatted, encrypted if HTTPS  
-3. **Session Layer** – TCP session established  
-4. **Transport Layer (TCP)** – Adds port & sequence numbers → forms **segments**  
-5. **Network Layer (IP)** – Adds source & destination IP → forms **packets**  
-6. **Data Link Layer (Ethernet)** – Adds MAC addresses → forms **frames**  
-7. **Physical Layer** – Converts bits into **electrical/wireless signals**
+* CIA Triad: Confidentiality, Integrity, Availability
+* Threat vs Vulnerability vs Risk
+* Attack surface
+* Defense in depth
+* Attacker vs Defender mindset
 
-**Router forwarding:**  
-- Data link layer header replaced at each hop  
-- Network layer IP remains the same
-
-**Server receives:**  
-- Layers remove headers step by step → original HTTP request delivered
-
-**Interview Tip:**  
-> Always explain **encapsulation → transmission → decapsulation** when drawing packet flow diagrams.
+**Key Interview Thought:**
+Security is about **reducing risk**, not achieving 100% safety.
 
 ---
 
-## Subnet Practice Questions
+### Day 2 – Networking for Security
 
-**Practice Question 1:**  
-Network: `192.168.1.0/24` → subnet into 4 subnets  
+You learned:
 
-| Subnet | Network       | Broadcast     | Usable Hosts |
-| ------ | ------------- | ------------- | ------------ |
-| 1      | 192.168.1.0   | 192.168.1.63  | .1 – .62     |
-| 2      | 192.168.1.64  | 192.168.1.127 | .65 – .126   |
-| 3      | 192.168.1.128 | 192.168.1.191 | .129 – .190  |
-| 4      | 192.168.1.192 | 192.168.1.255 | .193 – .254  |
+* TCP/IP layers
+* DNS working & attacks
+* HTTP vs HTTPS
+* Ports & protocols
+* Firewalls
+* TLS handshake
+* Wireshark basics
 
-**Practice Question 2:** (VLSM)  
-IP: `10.0.0.0/22` → Dept A: 100 hosts, Dept B: 50 hosts, Dept C: 20 hosts  
-
-| Department | Network     | Subnet Mask | Usable Hosts |
-| ---------- | ----------- | ----------- | ------------ |
-| A          | 10.0.0.0    | /25         | 126          |
-| B          | 10.0.0.128  | /26         | 62           |
-| C          | 10.0.0.192  | /27         | 30           |
-
-> Allocate **largest subnets first** to avoid overlap.
+**Key Interview Thought:**
+Every attack travels through the **network**.
 
 ---
 
-## Explain TCP Handshake Aloud
+### Day 3 – Web Architecture
 
-Practice explaining like an interviewer is listening:  
+You learned:
 
-> “TCP is connection-oriented. To establish a connection, we use a **3-way handshake**. First, the client sends a SYN with its initial sequence number. Second, the server responds with SYN-ACK, acknowledging the client’s sequence and providing its own sequence number. Third, the client sends an ACK, completing the handshake. After this, reliable communication begins.”
+* Client–server model
+* REST APIs
+* HTTP methods
+* Status codes
+* Cookies vs headers
+* Browser DevTools inspection
 
-**Tip:** Use drawings or hand motions to illustrate sequence numbers and ACKs.
-
----
-
-## Mock Interview Questions
-
-### OSI & TCP/IP
-1. Explain OSI model with a real-life example.  
-2. Difference between TCP and UDP.  
-3. Explain flow control and congestion control in TCP.  
-
-### IP & Subnetting
-4. Why CIDR replaced classful IPs?  
-5. Given IP `192.168.10.0/24`, create subnets for 3 departments.  
-6. Explain public vs private IP and NAT.  
-
-### Protocols & Security
-7. Explain HTTP vs HTTPS.  
-8. Difference between FTP and SFTP.  
-9. What is a SYN flood attack?  
-10. Explain DNS spoofing and mitigation.  
-
-### Packet Flow
-11. Draw and explain full packet flow from client to server.  
-12. Explain encapsulation and decapsulation.  
+**Key Interview Thought:**
+Client is **always untrusted**.
 
 ---
 
-## Revision Checklist – Day 7
+### Day 4 – Authentication Basics
 
-- Draw **full packet flow diagram** (all OSI layers + encapsulation)  
-- Solve **subnetting problems quickly** (classful & VLSM)  
-- Explain **TCP handshake aloud** with confidence  
-- Compare **protocols clearly** (HTTP/HTTPS, FTP/SFTP, SMTP/POP3/IMAP)  
-- Explain **common attacks & mitigations** (SYN flood, DNS spoofing, MAC flooding)  
-- Use **real-life analogies** for OSI layers, subnetting, and protocols  
+You learned:
 
-**Interview Tip:** Speak slowly, give examples, and **relate security concepts wherever possible**.
+* Password storage rules
+* Hashing vs encryption
+* bcrypt / Argon2
+* Salting
+* Login verification flow
+
+**Key Interview Thought:**
+Passwords are **verified, never decrypted**.
 
 ---
 
-## Next Steps
+### Day 5 – Authorization Models
 
-Compile all **Week 1 guides (Days 1–7)** into a **single, ultra-detailed, day-by-day networking foundation document**, including diagrams, subnet tables, and attack examples, for **daily revision and interview practice**.
+You learned:
+
+* Authentication vs Authorization
+* RBAC, ABAC, ACL
+* Least privilege
+* Role-based access in Flask
+
+**Key Interview Thought:**
+Most breaches are **authorization failures**, not login failures.
+
+---
+
+### Day 6 – Session vs Token Authentication
+
+You learned:
+
+* Cookies & security flags
+* Sessions
+* JWT structure
+* Access vs refresh tokens
+* JWT login API
+
+**Key Interview Thought:**
+JWT improves scalability but increases security responsibility.
+
+---
+
+## PART 2: EXPLAINING CONCEPTS ALOUD (VERY IMPORTANT)
+
+You must practice **speaking**, not just reading.
+
+Below are **model answers** you should practice saying.
+
+---
+
+### 1. Explain CIA Triad (Out Loud)
+
+> “The CIA triad defines the three core security goals:
+> Confidentiality ensures data is accessible only to authorized users,
+> Integrity ensures data is not modified without authorization,
+> and Availability ensures systems are accessible when needed.
+> Any security control maps to one or more of these.”
+
+---
+
+### 2. Explain Session vs JWT (Out Loud)
+
+> “Sessions are server-side stored authentication states identified by a session ID, while JWTs are stateless tokens that carry user claims and are verified using a signature. Sessions are easier to invalidate, while JWTs scale better but require careful handling.”
+
+---
+
+### 3. Explain RBAC Simply (Out Loud)
+
+> “RBAC grants permissions based on predefined roles, which simplifies authorization management but can become rigid in complex environments.”
+
+---
+
+## PART 3: INTERVIEW SHORT-ANSWER PRACTICE (CRITICAL)
+
+These are **exact interview-style questions**.
+
+---
+
+## Q1: “How does authentication fail?”
+
+### Short, Strong Interview Answer:
+
+> “Authentication fails when identity verification is weak or improperly implemented.
+> Common failures include storing passwords in plain text, using weak hashing algorithms, lack of rate limiting, insecure password policies, credential reuse, and improper session or token handling.
+> These failures allow attackers to bypass login controls or take over accounts.”
+
+---
+
+### Expanded Answer (If Interviewer Asks More):
+
+> “Authentication can fail due to technical issues like weak password storage or logical issues like missing brute-force protection. Token-based systems may also fail if tokens are leaked, stored insecurely, or lack expiration.”
+
+---
+
+## Q2: “Why is JWT risky?”
+
+### Short, Strong Interview Answer:
+
+> “JWT is risky because it is self-contained and stateless. If a JWT is stolen, the attacker can use it until it expires. Additionally, JWT payloads are readable, logout is difficult to enforce, and improper storage or weak secrets can lead to token abuse.”
+
+---
+
+### Expanded Answer (Interview Gold):
+
+> “JWT increases scalability but shifts security responsibility to token management. Risks include token leakage, long expiration times, storing tokens in localStorage, lack of rotation, and weak signing keys. Without careful design, JWT can increase attack impact.”
+
+---
+
+## PART 4: COMMON FOLLOW-UP QUESTIONS (Be Ready)
+
+### When should we NOT use JWT?
+
+> “For traditional server-rendered applications where session invalidation and simplicity are more important than scalability.”
+
+---
+
+### How do you secure JWT?
+
+> “By using short-lived access tokens, secure storage, HTTPS, strong secrets, token rotation, and refresh tokens.”
+
+---
+
+## PART 5: FINAL WEEK-1 SELF-CHECK
+
+You are **Week-1 ready** if you can:
+
+* Explain all concepts without notes
+* Draw authentication flows on paper
+* Write simple Flask auth code
+* Identify security risks in designs
+* Answer “why”, not just “what”
+
+---
